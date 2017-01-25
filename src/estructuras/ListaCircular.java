@@ -1,5 +1,7 @@
 package estructuras;
 
+import org.omg.CORBA.FREE_MEM;
+
 public class ListaCircular {
 	
 	protected Nodo inicio;
@@ -52,31 +54,78 @@ public class ListaCircular {
 		tam++;
 	}
 /*
- * void search()
+ * void delete_node_position()
 {
-    int count = 0, key, i, f = 0;
+    int pos, count = 0, i;
+    n *temp, *prevnode;
 
-    printf("\nenter the value to be searched:");
-    scanf("%d", &key);
+    printf("\n enter the position which u wanted to delete:");
+    scanf("%d", &pos);
 
     if (first == last && first == NULL)
-        printf("\nlist is empty no elemnets in list to search");
+        printf("\n empty linked list you cant delete");
+
     else
     {
-        for (ptr = first,i = 0;i < number;i++,ptr = ptr->next)
+        if (number < pos)
+            printf("\n node cant be deleted at position as it is exceeding the linkedlist length");
+
+        else
         {
-            count++;
-            if (ptr->val == key)
+            for (ptr = first,i = 1;i <= number;i++)
             {
-                printf("\n the value is found at position at %d", count);
-                f = 1;
+                prevnode = ptr;
+                ptr = ptr->next;
+                if (pos == 1)
+                {
+                    number--;
+                    last->next = prevnode->next;
+                    ptr->prev = prevnode->prev;
+                    first = ptr;
+                    printf("%d is deleted", prevnode->val);
+                    free(prevnode);
+                    break;
+                }
+                else if (i == pos - 1)
+                {
+                    number--;
+                    prevnode->next = ptr->next;
+                    ptr->next->prev = prevnode;
+                    printf("%d is deleted", ptr->val);
+                    free(ptr);
+                    break;
+                }
             }
         }
-        if (f == 0)
-            printf("\n the value is not found in linkedlist");
     }
 }
+}
  */
+	public void borrarPos(int n){
+		int i=0;
+		Nodo aux=inicio;
+		Nodo previo;
+		for(aux=inicio, i=0; i<tam; i++){
+			previo=aux;
+			aux= aux.getSiguiente();
+			if(n==1){
+				
+				ultimo.siguiente=previo.siguiente;
+				aux.anterior=previo.anterior;
+				inicio=aux;
+				tam--;
+				break;
+			}
+			else if(i==n-1){
+			
+				previo.siguiente=previo.siguiente;
+				aux.siguiente.anterior=previo;
+				tam--;
+				break;
+			}
+		}
+	}
+	
 	public void buscarLetra(String c){
 		Nodo aux;
 		Nodo aux2;
@@ -114,5 +163,34 @@ public class ListaCircular {
 	}
 	
 
+	/*
+	 * void display_in_rev()
+{
+    int i;
+    if (first == last && first == NULL)
+        printf("\nlist is empty there are no elments");
+    else
+    {
+        for (ptr = last, i = 0;i < number;i++,ptr = ptr->prev)
+        {
+            printf("\n%d", ptr->val);
+        }
+    }
+}
+	 */
+	
+	public void imprimirRev(){
+		int i;
+		Nodo aux;
+		if(estaVacio()){
+			System.out.println("esta vacia");
+		}
+		else{
+			for(aux=ultimo, i=0; i<tam; i++, aux=aux.anterior){
+				System.out.print(aux.getContenido()+" ");
+			}
+			System.out.println(" ");
+		}
+	}
 
 }

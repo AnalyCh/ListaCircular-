@@ -15,6 +15,9 @@ public class Aplicacion {
 		lista.imprimir();
 		lista.buscarLetra("a");
 		lista.buscarLetra("h");
+		lista.borrarPos(1);
+		lista.imprimir();
+		lista.imprimirRev();
 
 	}
 
