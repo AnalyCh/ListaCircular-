@@ -53,54 +53,7 @@ public class ListaCircular {
 		}
 		tam++;
 	}
-/*
- * void delete_node_position()
-{
-    int pos, count = 0, i;
-    n *temp, *prevnode;
 
-    printf("\n enter the position which u wanted to delete:");
-    scanf("%d", &pos);
-
-    if (first == last && first == NULL)
-        printf("\n empty linked list you cant delete");
-
-    else
-    {
-        if (number < pos)
-            printf("\n node cant be deleted at position as it is exceeding the linkedlist length");
-
-        else
-        {
-            for (ptr = first,i = 1;i <= number;i++)
-            {
-                prevnode = ptr;
-                ptr = ptr->next;
-                if (pos == 1)
-                {
-                    number--;
-                    last->next = prevnode->next;
-                    ptr->prev = prevnode->prev;
-                    first = ptr;
-                    printf("%d is deleted", prevnode->val);
-                    free(prevnode);
-                    break;
-                }
-                else if (i == pos - 1)
-                {
-                    number--;
-                    prevnode->next = ptr->next;
-                    ptr->next->prev = prevnode;
-                    printf("%d is deleted", ptr->val);
-                    free(ptr);
-                    break;
-                }
-            }
-        }
-    }
-}
-}
- */
 	public void borrarPos(int n){
 		int i=0;
 		Nodo aux=inicio;
@@ -163,21 +116,7 @@ public class ListaCircular {
 	}
 	
 
-	/*
-	 * void display_in_rev()
-{
-    int i;
-    if (first == last && first == NULL)
-        printf("\nlist is empty there are no elments");
-    else
-    {
-        for (ptr = last, i = 0;i < number;i++,ptr = ptr->prev)
-        {
-            printf("\n%d", ptr->val);
-        }
-    }
-}
-	 */
+	
 	
 	public void imprimirRev(){
 		int i;
